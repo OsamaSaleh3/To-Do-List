@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
   <title>To Do List</title>
 </head>
-
 <body>
   <div class="main">
-      <div class="toDoArea">
-        <h1 class="title">To Do List</h1>
+    <div class="toDoArea">
+      <h1 class="title">To Do List</h1>
 
-        <form class="addTaskBar" id="taskForm" autocomplete="off">
-          <input id="taskInput" class="taskDecription" type="text" placeholder="Add a task..." required>
-          <button type="submit" class="addTaskBtn">Add</button>
-        </form>
+      <form class="addTaskBar" id="taskForm" autocomplete="off">
+        <input id="taskInput" class="taskDecription" type="text" placeholder="Add a task..." required />
+        <button type="submit" class="addTaskBtn">Add</button>
+      </form>
 
-        <h2 class="taskListTitle">Task List</h2>
-        <ul class="taskList" aria-live="polite">
-        </ul>
+      <h2 class="taskListTitle">Task List</h2>
+      <ul class="taskList" aria-live="polite"></ul>
 
-        <div class="line"></div>
+      <div class="line"></div>
 
-        <div class="taskSummary">
-          <div>
-            Completed: <span id="completedTaskNum">0</span>
-          </div>
-          |
-          <div>
-            Uncompleted: <span id="UncompletedTaskNum">0</span>
-          </div>
-        </div>
+      <div class="taskSummary">
+        <div>Completed: <span id="completedTaskNum">0</span></div>
+        |
+        <div>Uncompleted: <span id="UncompletedTaskNum">0</span></div>
       </div>
     </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>

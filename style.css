@@ -1,10 +1,6 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   margin: 0;
@@ -33,7 +29,7 @@ body {
   border: 3px solid rgb(47, 70, 184);
   border-radius: 10px;
   width: 100%;
-  max-width: 400px;   
+  max-width: 400px;
   margin: 20px;
 }
 
@@ -44,15 +40,15 @@ body {
 }
 
 .taskDecription {
-  flex: 1;              
-  min-width: 0;        
+  flex: 1;
+  min-width: 0;
   height: 2.3rem;
   border-radius: 5px;
   padding: 0 0.5rem;
 }
 
 .addTaskBtn {
-  flex-shrink: 0;      
+  flex-shrink: 0;
   padding: 0 1rem;
   height: 2.3rem;
   border: 0;
@@ -69,8 +65,59 @@ body {
 }
 
 .taskSummary {
+   display: flex;
+    gap: 10px; 
+}
+
+:root {
+  --task-gap: 12px;      
+  --task-height: 64px;     
+}
+
+.taskList {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: var(--task-gap);
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  max-height: calc(3 * var(--task-height) + 2 * var(--task-gap));
+  overflow-y: auto;
+
+  padding-right: 4px;  
+}
+
+.task {
+  display: flex;
+  align-items: center;
   gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  width: 100%;
+  min-height: var(--task-height);  
+  box-sizing: border-box;
+}
+
+.task input[type="checkbox"] { margin: 0; }
+
+@media (max-width: 480px) {
+  .taskList {
+    max-height: calc(3 * 56px + 2 * var(--task-gap));
+  }
+}
+
+
+.task p {
+  flex: 1;
+  margin: 0;
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 @media (max-width: 480px) {
@@ -78,8 +125,5 @@ body {
     flex-direction: column;
     align-items: stretch;
   }
-
-  .addTaskBtn {
-    width: 100%;
-  }
+  .addTaskBtn { width: 100%; }
 }
