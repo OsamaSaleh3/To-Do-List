@@ -8,6 +8,12 @@ using ToDo.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+string[] allowedOrigins = new[]
+{
+    "http://127.0.0.1:5500",
+    "http://localhost:5500"
+};
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -30,15 +36,17 @@ builder.Services.AddScoped<ITodoItemService, TodoItemService>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("JSPolicy", builder =>
+    options.AddPolicy("JSPolicy", policy =>
     {
-        builder.WithOrigins("http://127.0.0.1:5500") 
+        policy.WithOrigins(allowedOrigins) 
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
 });
     
 var app = builder.Build();
+app.UseHttpsRedirection();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -49,11 +57,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("JSPolicy");
+
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors("JSPolicy");
 
 app.Run();
