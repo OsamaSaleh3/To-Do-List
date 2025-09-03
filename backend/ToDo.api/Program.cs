@@ -27,6 +27,16 @@ builder.Services.AddAutoMapper(typeof(TodoItemProfile).Assembly);
 
 
 builder.Services.AddScoped<ITodoItemService, TodoItemService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("JSPolicy", builder =>
+    {
+        builder.WithOrigins("http://127.0.0.1:5500") 
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
     
 var app = builder.Build();
 
@@ -43,5 +53,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("JSPolicy");
 
 app.Run();
