@@ -12,6 +12,9 @@ addTaskBtn.addEventListener("click",()=>{
     checkTask.type="checkbox";
     let taskDescription=document.createElement("p");
     taskDescription.textContent=text;
+    let deleteBtn=document.createElement("button");
+    deleteBtn.textContent="delete";
+    deleteBtn.className="deleteBtn";
 
     checkTask.addEventListener("change",()=>{
         if(checkTask.checked){
@@ -24,6 +27,7 @@ addTaskBtn.addEventListener("click",()=>{
 
     task.appendChild(checkTask);
     task.appendChild(taskDescription);
+    task.appendChild(deleteBtn);
     taskList.appendChild(task);
 
     taskInput.value = "";

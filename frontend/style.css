@@ -120,6 +120,13 @@ body {
   word-break: break-word;
 }
 
+.deleteBtn{
+  height: fit-content;
+  width: fit-content;
+  background-color: rgb(165, 38, 38);
+  color:gainsboro;
+}
+
 @media (max-width: 480px) {
   .addTaskBar {
     flex-direction: column;
