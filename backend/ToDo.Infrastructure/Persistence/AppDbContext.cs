@@ -21,7 +21,15 @@ namespace ToDo.Infrastructure.Persistence
         {
             base.OnModelCreating(modelBuilder);
 
-    
+            modelBuilder.Entity<ToDoItem>()
+              .Property(t => t.IsCompleted)
+              .HasDefaultValue(false);
+
+            modelBuilder.Entity<ToDoItem>()
+                .Property(t => t.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+
         }
 
     }

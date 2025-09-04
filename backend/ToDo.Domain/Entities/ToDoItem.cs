@@ -12,9 +12,9 @@ namespace ToDo.Domain.Entities
 
         public string Title { get; set; } = null!;
 
-        public bool IsCompleted { get; set; }
+        public bool IsCompleted { get; set; } = false;
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }= DateTime.UtcNow;
 
     }
 }

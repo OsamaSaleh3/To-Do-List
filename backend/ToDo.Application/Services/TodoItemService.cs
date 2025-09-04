@@ -21,10 +21,13 @@ namespace ToDo.Application.Services
             _mapper = mapper;
         }
 
-        public async Task AddAsync(TodoItemCreateDto dto)
+        public async Task<ToDoItem> AddAsync(TodoItemCreateDto dto)
         {
             var item =  _mapper.Map<ToDoItem>(dto);
+            item.IsCompleted = false;
+            item.CreatedAt = DateTime.UtcNow;
             await _repository.AddAsync(item);
+            return _mapper.Map<ToDoItem>(item);
         }
 
         public async Task DeleteAsync(int id)

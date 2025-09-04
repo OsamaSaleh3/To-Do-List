@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ToDo.Application.DTOs;
+using ToDo.Domain.Entities;
 
 namespace ToDo.Domain.Interfaces
 {
@@ -8,7 +9,7 @@ namespace ToDo.Domain.Interfaces
     {
         Task<List<TodoItemDto>> GetAllAsync();
         Task<TodoItemDto?> GetByIdAsync(int id);
-        Task AddAsync(TodoItemCreateDto dto);
+        Task<ToDoItem> AddAsync(TodoItemCreateDto dto);
         Task UpdateAsync(TodoItemUpdateDto dto);
         Task DeleteAsync(int id);
     }

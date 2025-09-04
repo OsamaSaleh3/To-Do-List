@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Xml;
 using ToDo.Application.DTOs;
+using ToDo.Domain.Entities;
 using ToDo.Domain.Interfaces;
 
 namespace ToDo.api.Controllers
@@ -49,10 +50,14 @@ namespace ToDo.api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
       
-        public async Task<ActionResult> Add([FromBody] TodoItemCreateDto dto)
+        public async Task<ActionResult<ToDoItem>> Add([FromBody] TodoItemCreateDto dto)
         {
-           await _service.AddAsync(dto);
-            return Ok(dto);
+           var created=await _service.AddAsync(dto);
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = created.Id },
+                created
+                );
         }
 
         [HttpPut]
