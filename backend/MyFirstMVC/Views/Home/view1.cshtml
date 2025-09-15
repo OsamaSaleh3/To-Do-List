@@ -1,0 +1,41 @@
+﻿<h1>osama</h1>
+<style>
+h1{
+	color: red;
+}
+section{
+		background-color: blue;
+		width:100px;
+		height: 100px;
+}
+
+	aside{
+		background-color: green;
+		width:100px;
+		height: 100px;
+	}
+</style>
+
+<script>
+	console.log("osama");
+</script>
+
+@{
+	int x = 10;
+	int y = 20;
+	<h1>x:@x>y:@y</h1>
+}
+
+@if (x > y)
+{
+	<section></section>
+}
+else
+{
+	<aside></aside>
+}
+
+@for(int i = 0; i < 10; i++)
+{
+	<li>@i</li>
+}
